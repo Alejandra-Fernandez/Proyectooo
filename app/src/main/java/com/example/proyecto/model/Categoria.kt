@@ -11,7 +11,7 @@ class Categoria (
         fun getCategories()= listOf(
             Categoria(
                 0,
-                "Limax",
+                "Lima",
                 R.drawable.lima,
             ),
             Categoria(
