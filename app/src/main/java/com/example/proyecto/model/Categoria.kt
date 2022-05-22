@@ -46,7 +46,7 @@ class Categoria (
             ),
             Categoria(
                 7,
-                "Test",
+                "Test2",
                 R.drawable.loreto,
             )
     )
