@@ -36,6 +36,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.proyecto.component.card.RegionCard
 import com.example.proyecto.model.Producto
 import com.example.proyecto.model.Region
@@ -61,6 +62,7 @@ fun RegionsFragment(navController: NavController){
     }
 
 }
+@Preview
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Slides() {
@@ -89,6 +91,7 @@ fun Slides() {
 
 }
 
+@Preview
 @Composable
 fun Categories(){
     val categories = Categoria().getCategories()
@@ -116,8 +119,8 @@ fun Categories(){
         Spacer(modifier = Modifier.padding(10.dp))
         LazyRow {
             items(categories){
-                TagCard(it.category)
+                TagCard(it.category)}
+
             }
         }
     }
-}

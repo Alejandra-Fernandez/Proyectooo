@@ -43,6 +43,11 @@ class Categoria (
                 6,
                 "Loreto",
                 R.drawable.loreto,
+            ),
+            Categoria(
+                7,
+                "Test2",
+                R.drawable.loreto,
             )
     )
 
