@@ -37,6 +37,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import androidx.compose.foundation.lazy.items
 import com.example.proyecto.component.card.RegionCard
+import com.example.proyecto.model.Producto
 import com.example.proyecto.model.Region
 
 
@@ -53,6 +54,7 @@ fun RegionsFragment(navController: NavController){
         items(regions){
             RegionCard(it,
                 onItemClick = {
+                    Region().getRegiones()
 
                 })
         }

@@ -41,11 +41,11 @@ fun LoginScreen(naveController:NavController){
             item {
                 Spacer(modifier = Modifier.padding(20.dp))
                 LogoApp()
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(10.dp))
                 TextFieldBase("Correo", emailValue)
-                Spacer(modifier = Modifier.padding(20.dp))
-                TextFieldPassword("ContraseÃ±a", passwordValue, passwordVisible)
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(5.dp))
+                TextFieldPassword("Contraseña", passwordValue, passwordVisible)
+                Spacer(modifier = Modifier.padding(10.dp))
                 ButtonBase("Iniciar Sesion", onClick = {
                     naveController.navigate(Screen.HomeScreen.route) {
                         popUpTo(Screen.LoginScreen.route) {
@@ -54,7 +54,7 @@ fun LoginScreen(naveController:NavController){
                         }
                     }
                 })
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(10.dp))
                 TextClick("Crear cuenta",onClick=  {
                     naveController.navigate(Screen.SignUpScreen.route){
                         popUpTo(Screen.LoginScreen.route){

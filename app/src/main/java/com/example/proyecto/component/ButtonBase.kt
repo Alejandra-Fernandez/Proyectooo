@@ -25,7 +25,8 @@ import com.example.proyecto.R
 
 @Composable
 fun ButtonBase(text:String,onClick:()->Unit){
-    Button(onClick = { onClick()}) {
+    Button(onClick = {
+        onClick()}) {
         Text(
             text = text,
             fontSize = 20.sp)

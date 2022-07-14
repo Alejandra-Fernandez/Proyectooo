@@ -27,7 +27,9 @@ import com.example.proyecto.R
 fun TextFieldBase(text:String,textValue: MutableState<String>){
     OutlinedTextField(
         value = textValue.value,
-        onValueChange = {textValue.value= it},
+        onValueChange = {
+            textValue.value= it
+                        },
         label = {
             Text(
                 text = text,

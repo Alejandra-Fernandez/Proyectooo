@@ -7,4 +7,5 @@ class Producto(
     val image:Int=0
 ){
 
+
 }

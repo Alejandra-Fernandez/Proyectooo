@@ -26,7 +26,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.compose.collectAsLazyPagingItems
+import coil.annotation.ExperimentalCoilApi
 import com.example.proyecto.R
 import com.example.proyecto.component.card.CategoriaCard
 import com.example.proyecto.component.card.TagCard
@@ -37,20 +42,32 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.example.proyecto.component.card.RegionCard
 import com.example.proyecto.model.Region
+import com.example.proyecto.screen.common.ListContent
 
-@OptIn(ExperimentalFoundationApi::class)
+@ExperimentalCoilApi
+@ExperimentalPagingApi
 @Composable
-fun CategoriasFragment(navController:NavController){
-    val categories = Categoria().getCategories()
+fun CategoriasFragment(navController: NavController
+) {
+    val categoriasView: CategoriasView = hiltViewModel()
+    val getAllImages = categoriasView.getAllImages.collectAsLazyPagingItems()
+
+    Scaffold(
+        content = {
+            ListContent(items = getAllImages)
+        }
+    )
+
+    /* val categories = Categoria().getCategories()
     LazyVerticalGrid(cells = GridCells.Fixed(2) ){
         items(categories){
             CategoriaCard(it, onItemClick = {
 
             }
-            )
-
-        }
-
-    }
+            )*/
 
 }
+
+
+
+

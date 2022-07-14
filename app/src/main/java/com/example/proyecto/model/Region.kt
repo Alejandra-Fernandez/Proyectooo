@@ -19,39 +19,43 @@ class Region (
                 "5",
                 R.drawable.costa2,
 
-                listOf(
-                    Producto(
-                        0,
-                        "Huacachina",
-                        5,
-                        R.drawable.huacachina,
-                    ),
-                    Producto(
-                        1,
-                        "Paracas",
-                        5,
-                        R.drawable.paracas,
-                    ),
-                    Producto(
-                        2,
-                        "Punta Sal",
-                        6,
-                        R.drawable.puntasal,
-                    ),
-                    Producto(
-                     3,
-                    "Huanchaco",
-                    6,
-                    R.drawable.huanchaco,
-                ),
-                    Producto(
-                        4,
-                        "Caral",
-                        7,
-                        R.drawable.caral,
+
+                    listOf(
+                        Producto(
+                            0,
+                            "Huacachina",
+                            5,
+                            R.drawable.huacachina,
+                        ),
+                        Producto(
+                            1,
+                            "Paracas",
+                            5,
+                            R.drawable.paracas,
+                        ),
+                        Producto(
+                            2,
+                            "Punta Sal",
+                            6,
+                            R.drawable.puntasal,
+                        ),
+                        Producto(
+                            3,
+                            "Huanchaco",
+                            6,
+                            R.drawable.huanchaco,
+                        ),
+                        Producto(
+                            4,
+                            "Caral",
+                            7,
+                            R.drawable.caral,
+                        )
+
                     )
 
-                )
+
+
             ),
             Region(
                 1,
