@@ -44,8 +44,8 @@ fun Navigation() {
         }
 
         //room
-        composable(route = Screen.OrderCardFragment.route) {
-            OrderCardFragment(navController = navController)
+        composable(Screen.OrderCardFragment.route) {
+            OrderCardFragment(navController)
         }
         composable(
             route = Screen.Edit.route,

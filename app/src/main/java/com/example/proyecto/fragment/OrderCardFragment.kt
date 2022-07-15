@@ -25,10 +25,11 @@ import com.example.proyecto.ui.theme.ProyectoTheme
 
 
 @Composable
-fun HomeScreen(
+fun OrderCardFragment(
     navController: NavController,
-    viewModel: LugaresViewModel = hiltViewModel()
+
 ) {
+    val viewModel: LugaresViewModel = hiltViewModel()
     val state = viewModel.state.value
 
     Scaffold(
