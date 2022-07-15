@@ -5,4 +5,5 @@
     <string name="capital">Capital</string>
     <string name="superficie">Superficie</string>
     <string name="habitantes">Habitantes</string>
+    <string name="add_user">Agregar Lugar</string>
 </resources>
