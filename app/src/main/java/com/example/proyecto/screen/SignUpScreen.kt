@@ -42,20 +42,21 @@ fun SignUpScreen(naveController: NavController){
                 .fillMaxHeight()
         ) {
             item {
+                Spacer(modifier = Modifier.padding(5.dp))
                 LogoApp()
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(5.dp))
                 TextFieldBase("Nombre", nameValue)
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(10.dp))
                 TextFieldBase("Correo", emailValue)
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(10.dp))
                 TextFieldBase("Telefono", phoneValue)
-                Spacer(modifier = Modifier.padding(20.dp))
-                TextFieldPassword("ContraseÃ±a", passwordValue,passwordVisible)
-                Spacer(modifier = Modifier.padding(20.dp))
-                TextFieldPassword("Confirmar ContraseÃ±a", confirmPasswordValue,confirmPasswordVisible)
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(10.dp))
+                TextFieldPassword("Contraseña", passwordValue,passwordVisible)
+                Spacer(modifier = Modifier.padding(10.dp))
+                TextFieldPassword("Confirmar Contraseña", confirmPasswordValue,confirmPasswordVisible)
+                Spacer(modifier = Modifier.padding(10.dp))
                 ButtonBase("Registrar",onClick= {})
-                Spacer(modifier = Modifier.padding(20.dp))
+                Spacer(modifier = Modifier.padding(10.dp))
                 TextClick("Iniciar Sesion",onClick=  {
                     naveController.navigate(Screen.LoginScreen.route) {
                         popUpTo(Screen.SignUpScreen.route) {

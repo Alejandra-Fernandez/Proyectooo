@@ -1,5 +1,6 @@
 package com.example.proyecto.screen
 
+
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
@@ -22,14 +23,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.paging.ExperimentalPagingApi
+import coil.annotation.ExperimentalCoilApi
+
 import com.example.proyecto.R
 import com.example.proyecto.component.*
+import com.example.proyecto.fragment.*
+import com.example.proyecto.navigation.Screen
 import com.example.proyecto.fragment.CategoriasFragment
 import com.example.proyecto.fragment.OrderCardFragment
 import com.example.proyecto.fragment.RegionsFragment
 
+
+@ExperimentalCoilApi
+@ExperimentalPagingApi
 
 @Composable
 fun HomeScreen(naveController:NavController){
@@ -39,15 +49,20 @@ fun HomeScreen(naveController:NavController){
     val toggleTheme:()->Unit={
         if(currentTheme) setDayTheme()else setDarkTheme()
     }
+
+    val onSearchClicked: () -> Unit={
+        naveController.navigate(com.example.proyecto.navigation.Screen.SearchScreen.route)
+    }
+
     Scaffold(backgroundColor = MaterialTheme.colors.background,
         modifier = Modifier.padding(15.dp),
         topBar = {
             Crossfade(targetState = section.value) {
                     section->
                 when(section){
-                    Section.Regions-> TopBarApp("Regiones del Peru", "Selecciona una region para ver sus lugares turisticos", R.drawable.ic_baseline_emoji_objects_24, onIconClick = toggleTheme)
-                    Section.Explore-> TopBarApp("Busca lugares turisticos del Peru", "Selecciona una ciudad", R.drawable.ic_baseline_search_24, onIconClick = {})
-                    Section.Favorites-> TopBarApp("Tus lugares favoritos", "Tus lugares mas visitados", R.drawable.ic_baseline_star_24, onIconClick = {})
+                    Section.Regions-> TopBarApp("Regiones del Peru", "Selecciona una region", R.drawable.ic_baseline_emoji_objects_24, onIconClick = toggleTheme)
+                    Section.Explore-> TopBarApp("Busca lugares turisticos", "Lugares de todo el Peru", R.drawable.ic_baseline_search_24, onIconClick = onSearchClicked)
+                    Section.Favorites-> TopBarApp("Tus lugares favoritos", "Ingresa tus lugares mas visitados", R.drawable.ic_baseline_star_24, onIconClick = {})
                     Section.Profile-> TopBarApp("Perfil", "Datos personales", R.drawable.ic_baseline_exit_to_app_24, onIconClick = {})
                 }
 
@@ -68,7 +83,7 @@ fun HomeScreen(naveController:NavController){
                 Section.Regions-> RegionsFragment(naveController)
                 Section.Explore-> CategoriasFragment(naveController)
                 Section.Favorites-> OrderCardFragment(naveController)
-                Section.Profile-> Text("Perfil")
+                Section.Profile-> ProfileFragment("nombre", naveController) //ventana del perfil de usuario
             }
 
         }

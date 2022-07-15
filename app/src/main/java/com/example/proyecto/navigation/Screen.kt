@@ -1,12 +1,18 @@
 package com.example.proyecto.navigation
 
-import com.example.proyecto.JetpackRoom.core.Constants.Companion.UPDATE_LISTA_SCREEN
 
-enum class Screen(val route:String) {
-    LoginScreen("login_screen"),
-    SignUpScreen("signup_screen"),
-    HomeScreen("home_screen"),
-    SearchScreen("search_screen"),
-    OrderCardFragment("order_screen"),
-    UpdateListaScreen(UPDATE_LISTA_SCREEN)
+sealed class Screen(val route:String) {
+    object LoginScreen: Screen("login_screen")
+    object SignUpScreen: Screen("signup_screen")
+    object HomeScreen: Screen("home_screen")
+    object SearchScreen: Screen("search_screen")
+    object OrderCardFragment: Screen("order")
+
+    //room
+    object Edit: Screen("edit?lugaresId={lugaresId}") {
+        fun passId(lugaresId: Int?): String {
+            return "edit?lugaresId=$lugaresId"
+        }
+    }
+
 }

@@ -1,94 +1,116 @@
 package com.example.proyecto.fragment
 
-
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.R
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.proyecto.JetpackRoom.componentes.AddListaAlertDialog
-import com.example.proyecto.JetpackRoom.componentes.AddListaFloatingActionButton
-import com.example.proyecto.JetpackRoom.componentes.ListaContent
-import com.example.proyecto.R
-import com.example.proyecto.component.card.CategoriaCard
-import com.example.proyecto.component.card.FavoritosCard
-import com.example.proyecto.component.card.TagCard
-import com.example.proyecto.model.Categoria
-import com.example.proyecto.screen.Section
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
-import com.example.proyecto.component.card.RegionCard
-import com.example.proyecto.model.Orden
-import com.example.proyecto.model.Region
+import com.example.proyecto.Room.feature_lugares.domain.model.Lugares
+import com.example.proyecto.Room.feature_lugares.presentation.HomeEvent
+import com.example.proyecto.Room.feature_lugares.presentation.HomeFab
+import com.example.proyecto.Room.feature_lugares.presentation.LugaresViewModel
+import com.example.proyecto.Room.feature_lugares.presentation.components.LugaresItem
+import com.example.proyecto.navigation.Screen
+import com.example.proyecto.ui.theme.ProyectoTheme
 
-@ExperimentalMaterialApi
+
 @Composable
-fun OrderCardFragment(navigateToUpdateListaScreen: (listaId: Int) -> Unit){
+fun OrderCardFragment(
+    navController: NavController
+) {
+    val viewModel: LugaresViewModel = hiltViewModel()
+    val state = viewModel.state.value
 
-    val viewModel: ListaViewModel = hiltViewModel()
-    //val navigateToUpdateListaScreen: (listaId: Int) -> Unit
-
-    val isDialogOpen = viewModel.isDialogOpen
-
-    fun openDialog() {
-        viewModel.isDialogOpen = true
-    }
-    fun closeDialog() {
-        viewModel.isDialogOpen = false
-    }
-
-    LaunchedEffect(Unit) {
-        viewModel.getListas()
-    }
     Scaffold(
 
         floatingActionButton = {
-            AddListaFloatingActionButton(
-                openDialog = {
-                    openDialog()
-                }
+            HomeFab(
+                onFabClicked = { navController.navigate(Screen.Edit.route) }
             )
         },
-        content = { padding ->
-            ListaContent(
-                padding = padding,
-                navigateToUpdateListaScreen = navigateToUpdateListaScreen
+        content = { innerPadding ->
+            HomeContent(
+                modifier = Modifier.padding(innerPadding),
+                onDeleteLugares = { viewModel.onEvent(HomeEvent.DeleteLugares(it)) },
+                onEditLugares = {
+                    navController.navigate(
+                        route = Screen.Edit.passId(it)
+                    )
+                },
+                lugar = state.lugar
             )
-            if(isDialogOpen) {
-                AddListaAlertDialog(
-                    closeDialog = {
-                        closeDialog()
-                    },
-                    addLista = { lista ->
-                        viewModel.addLista(lista)
-                    }
-                )
-            }
         }
     )
 }
+
+@Composable
+fun HomeContent(
+    modifier: Modifier = Modifier,
+    onDeleteLugares: (lugares: Lugares) -> Unit,
+    onEditLugares: (id: Int?) -> Unit,
+    lugar: List<Lugares> = emptyList()
+) {
+    Surface(
+
+        color = MaterialTheme.colors.surface,
+        modifier = modifier
+    ) {
+        LazyColumn {
+            items(lugar) { lugares ->
+                LugaresItem(
+                    lugares = lugares,
+                    onEditLugares = { onEditLugares(lugares.id) },
+                    onDeleteLugares = { onDeleteLugares(lugares) }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun HomeFab(
+    modifier: Modifier = Modifier,
+    onFabClicked: () -> Unit = {  }
+) {
+    FloatingActionButton(
+        onClick = onFabClicked,
+        modifier = modifier
+            .height(52.dp)
+            .widthIn(min = 52.dp),
+        backgroundColor = MaterialTheme.colors.primary
+    ) {
+        Icon(imageVector = Icons.Outlined.Add, contentDescription = stringResource(id = R.string.add_lugares))
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewLugaresContent() {
+    ProyectoTheme(darkTheme = false) {
+        HomeContent(onDeleteLugares = {}, onEditLugares = {})
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewLugaresFab() {
+    ProyectoTheme(darkTheme = false) {
+        HomeFab()
+    }
+}
+
+
 
 
 

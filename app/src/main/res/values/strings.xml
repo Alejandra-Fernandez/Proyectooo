@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Proyecto</string>
+    <string name="add_lugares">Agregar Lugares</string>
+    <string name="departamento">Departamento</string>
+    <string name="capital">Capital</string>
+    <string name="superficie">Superficie</string>
+    <string name="habitantes">Habitantes</string>
 </resources>
