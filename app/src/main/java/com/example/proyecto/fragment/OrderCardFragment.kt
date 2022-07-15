@@ -127,7 +127,6 @@ fun PreviewLugaresFab() {
                 it.image,
                 Icons.Default.Close,
                  onItemClick =  {
-
             }
             )
 
