@@ -97,6 +97,7 @@ fun HomeFab(
 @Preview(showBackground = true)
 @Composable
 fun PreviewLugaresContent() {
+
     ProyectoTheme(darkTheme = false) {
         HomeContent(onDeleteLugares = {}, onEditLugares = {})
     }
