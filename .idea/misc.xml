@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidS2Workspace/Proyectooo2/app/src/main/res/font/karla.xml" value="0.1" />
+        <entry key="..\:/AndroidS2Workspace/Proyectooo2/app/src/main/res/font/karla_bold.xml" value="0.1" />
+        <entry key="..\:/AndroidS2Workspace/Proyectooo2/app/src/main/res/layout/notification.xml" value="0.10235507246376811" />
         <entry key="..\:/Users/FERNADEZ/AndroidStudioProjects/Proyecto/app/src/main/res/font/karla.xml" value="0.11481481481481481" />
         <entry key="..\:/Users/FERNADEZ/AndroidStudioProjects/Proyecto/app/src/main/res/font/karla_bold.xml" value="0.11481481481481481" />
       </map>
