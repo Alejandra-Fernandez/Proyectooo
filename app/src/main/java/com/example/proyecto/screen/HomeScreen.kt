@@ -62,7 +62,7 @@ fun HomeScreen(naveController:NavController){
                 when(section){
                     Section.Regions-> TopBarApp("Regiones del Peru", "Selecciona una region", R.drawable.ic_baseline_emoji_objects_24, onIconClick = toggleTheme)
                     Section.Explore-> TopBarApp("Busca lugares turisticos", "Lugares de todo el Peru", R.drawable.ic_baseline_search_24, onIconClick = onSearchClicked)
-                    Section.Favorites-> TopBarApp("Tus lugares favoritos", "Ingresa tus lugares mas visitados", R.drawable.ic_baseline_star_24, onIconClick = {})
+                    Section.Favorites-> TopBarApp("Descubre nuevos lugares", "Obten postales de viaje", R.drawable.ic_baseline_star_24, onIconClick = {})
                     Section.Profile-> TopBarApp("Perfil", "Datos personales", R.drawable.ic_baseline_exit_to_app_24, onIconClick = {})
                 }
 
