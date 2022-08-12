@@ -74,8 +74,8 @@ class DownloadWorker(
                 Random.nextInt(),
                 NotificationCompat.Builder(context, "download_channel")
                     .setSmallIcon(R.drawable.arequipa)
-                    .setContentText("Downloading...")
-                    .setContentTitle("Download in progress")
+                    .setContentText("Descargando...")
+                    .setContentTitle("Descarga en progreso")
                     .build()
             )
         )
