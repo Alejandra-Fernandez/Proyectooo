@@ -23,7 +23,7 @@ class DownloadWorker(
 ): CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
-        //startForegroundService()
+        startForegroundService()
         //delay(5000L)
 
         val response = FileApi.instance.downloadImage()
